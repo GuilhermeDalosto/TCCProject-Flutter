@@ -1,4 +1,4 @@
-import 'package:caregiverproject/LoginScene.dart';
+import 'package:caregiverproject/LoginView.dart';
 import 'package:flutter/material.dart';
 
 
@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget{
         theme: new ThemeData(
           primarySwatch: Colors.green,          
         ),
-        home: new LoginScene()
+        home: new LoginView()
       );
     }
 }
