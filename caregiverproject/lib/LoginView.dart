@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:login/primary_button.dart';
-import 'auth.dart';
+import 'ButtonCustomComponent.dart';
+import 'AuthUtils.dart';
 
 class LoginView extends StatefulWidget {
   LoginView({Key key, this.title, this.auth, this.onSignIn}) : super(key: key);
 
   final String title;
-  final BaseAuth auth;
+  final AuthUtils auth;
   final VoidCallback onSignIn;
 
   @override
@@ -99,7 +99,7 @@ class _LoginViewState extends State<LoginView> {
     switch (_formType) {
       case FormType.login:
         return [
-          new LoginComponent(
+          new ButtonCustomComponent(
             key: new Key('login'),
             text: 'Login',
             height: 44.0,
@@ -113,7 +113,7 @@ class _LoginViewState extends State<LoginView> {
         ];
       case FormType.register:
         return [
-          new PrimaryButton(
+          new ButtonCustomComponent(
             key: new Key('register'),
             text: 'Create an account',
             height: 44.0,

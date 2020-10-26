@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 
-class LoginComponent extends StatelessWidget {
-  LoginComponent({this.key, this.text, this.height, this.onPressed}) : super(key: key);
+class ButtonCustomComponent extends StatelessWidget {
+  ButtonCustomComponent({this.key, this.text, this.height, this.onPressed}) : super(key: key);
   Key key;
   String text;
   double height;
