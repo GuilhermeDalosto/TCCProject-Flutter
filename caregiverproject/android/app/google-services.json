@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "90895503301",
+    "firebase_url": "https://cuidadores-auth.firebaseio.com",
+    "project_id": "cuidadores-auth",
+    "storage_bucket": "cuidadores-auth.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:90895503301:android:546b5b53b954d2bb6a45ac",
+        "android_client_info": {
+          "package_name": "com.example.caregiverproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "90895503301-lf6kp7bbdlipfbndh6r3s0149nl4tp6i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyATZAdrnQ6I4zc_6_1cv1a-GmV-FAXi-YM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "90895503301-lf6kp7bbdlipfbndh6r3s0149nl4tp6i.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "90895503301-hckujs7ev15d0s7aspcm3lrbli930562.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.caregiverproject"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
