@@ -1,3 +1,5 @@
+import 'package:caregiverproject/CreateFamily/CreateFamilyView.dart';
+import 'package:caregiverproject/CreateFamily/JoinFamilyView.dart';
 import 'package:flutter/material.dart';
 
 class FamilyOptionView extends StatefulWidget {
@@ -17,7 +19,10 @@ class _FamilyOptionViewState extends State<FamilyOptionView> {
     return [
       padded(
           child: RaisedButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => CreateFamilyView()));
+        },
         child: Text(
           "Create a Family",
           style: TextStyle(color: Colors.white),
@@ -26,7 +31,10 @@ class _FamilyOptionViewState extends State<FamilyOptionView> {
       )),
       padded(
           child: RaisedButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => JoinFamilyView()));
+        },
         child: Text(
           "Join a Family",
           style: TextStyle(color: Colors.white),

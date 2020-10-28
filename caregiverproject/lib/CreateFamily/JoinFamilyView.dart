@@ -1,3 +1,6 @@
+import 'package:caregiverproject/Member/MemberListView.dart';
+import 'package:caregiverproject/Services/AuthUtils.dart';
+import 'package:caregiverproject/Services/dbFuture.dart';
 import 'package:flutter/material.dart';
 
 class JoinFamilyView extends StatefulWidget {
@@ -22,7 +25,11 @@ class _JoinFamilyViewState extends State<JoinFamilyView> {
       )),
       padded(
           child: RaisedButton(
-        onPressed: () {},
+        onPressed: () async {
+          DBFuture().joinGroup(_familyName, await Auth().currentUser());
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => MemberList()));
+        },
         child: Text(
           "Join",
           style: TextStyle(color: Colors.white),

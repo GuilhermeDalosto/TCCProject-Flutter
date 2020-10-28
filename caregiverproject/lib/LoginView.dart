@@ -1,9 +1,10 @@
+import 'package:caregiverproject/CreateFamily/FamilyOptionView.dart';
 import 'package:flutter/material.dart';
 import 'ButtonCustomComponent.dart';
 import 'Services/AuthUtils.dart';
 
 class LoginView extends StatefulWidget {
-  LoginView({Key key, this.title, this.onSignIn}) : super(key: key);  
+  LoginView({Key key, this.title, this.onSignIn}) : super(key: key);
 
   final String title;
   final AuthProtocol auth = new Auth();
@@ -43,6 +44,8 @@ class _LoginViewState extends State<LoginView> {
         });
         print("Login feito com sucesso");
         // widget.onSignIn();
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => FamilyOptionView()));
       } catch (e) {
         setState(() {
           _authHint = 'Erro de Login\n\n${e.toString()}';
@@ -97,28 +100,29 @@ class _LoginViewState extends State<LoginView> {
   List<Widget> submitWidgets() {
     switch (_formType) {
       case FormType.login:
-        return [          
+        return [
           new SizedBox(height: 20),
-          new ButtonCustomComponent(                          
+          new ButtonCustomComponent(
               key: new Key('login'),
-              text: 'Login',              
-              height: 44.0,              
-              onPressed: validateAndSubmit),              
+              text: 'Login',
+              height: 44.0,
+              onPressed: validateAndSubmit),
           new FlatButton(
               key: new Key('need-account'),
               child: new Text("Precisa de uma conta? Registrar"),
               onPressed: moveToRegister),
         ];
       case FormType.register:
-        return [          
+        return [
           new TextFormField(
             key: new Key('password'),
             decoration: new InputDecoration(labelText: 'Confirmação de senha'),
             obscureText: true,
             autocorrect: false,
-            validator: (val) =>
-                val.isEmpty ? 'Confirmação de senha não pode estar vazia' : null,
-            onSaved: (val) => _password = val,            
+            validator: (val) => val.isEmpty
+                ? 'Confirmação de senha não pode estar vazia'
+                : null,
+            onSaved: (val) => _password = val,
           ),
           new SizedBox(height: 30),
           new ButtonCustomComponent(

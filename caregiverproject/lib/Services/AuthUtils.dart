@@ -5,7 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'dbFuture.dart';
 
 abstract class AuthProtocol {
-  Future<String> currentUser();
+  Future<Member> currentUser();
   Future<String> signIn(String email, String password);
   Future<String> createUser(String email, String password);
   Future<void> signOut();
@@ -36,10 +36,10 @@ class Auth implements AuthProtocol {
     return member.toString();
   }
 
-  Future<String> currentUser() async {
+  Future<Member> currentUser() async {
     User user = _firebaseAuth.currentUser;
     if (user != null) {
-      return user.toString();
+      return Member(isAdm: false, name: user.displayName, uid: user.uid);
     } else {
       return null;
     }
