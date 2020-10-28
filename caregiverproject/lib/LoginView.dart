@@ -6,7 +6,7 @@ class LoginView extends StatefulWidget {
   LoginView({Key key, this.title, this.auth, this.onSignIn}) : super(key: key);
 
   final String title;
-  final AuthUtils auth;
+  final Auth auth;
   final VoidCallback onSignIn;
 
   @override
@@ -96,19 +96,20 @@ class _LoginViewState extends State<LoginView> {
   List<Widget> submitWidgets() {
     switch (_formType) {
       case FormType.login:
-        return [
-          new ButtonCustomComponent(
+        return [          
+          new SizedBox(height: 20),
+          new ButtonCustomComponent(                          
               key: new Key('login'),
-              text: 'Login',
-              height: 44.0,
-              onPressed: validateAndSubmit),
+              text: 'Login',              
+              height: 44.0,              
+              onPressed: validateAndSubmit),              
           new FlatButton(
               key: new Key('need-account'),
               child: new Text("Precisa de uma conta? Registrar"),
               onPressed: moveToRegister),
         ];
       case FormType.register:
-        return [
+        return [          
           new TextFormField(
             key: new Key('password'),
             decoration: new InputDecoration(labelText: 'Confirmação de senha'),
@@ -118,6 +119,7 @@ class _LoginViewState extends State<LoginView> {
                 val.isEmpty ? 'Confirmação de senha não pode estar vazia' : null,
             onSaved: (val) => _password = val,            
           ),
+          new SizedBox(height: 30),
           new ButtonCustomComponent(
               key: new Key('register'),
               text: 'Criar uma conta',
@@ -152,7 +154,7 @@ class _LoginViewState extends State<LoginView> {
         backgroundColor: Colors.grey[300],
         body: new SingleChildScrollView(
             child: new Container(
-                padding: const EdgeInsets.all(16.0),
+                padding: const EdgeInsets.all(30.0),
                 child: new Column(children: [
                   new Card(
                       child: new Column(
