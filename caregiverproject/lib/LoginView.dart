@@ -3,10 +3,10 @@ import 'ButtonCustomComponent.dart';
 import 'AuthUtils.dart';
 
 class LoginView extends StatefulWidget {
-  LoginView({Key key, this.title, this.auth, this.onSignIn}) : super(key: key);
+  LoginView({Key key, this.title, this.onSignIn}) : super(key: key);  
 
   final String title;
-  final Auth auth;
+  final AuthProtocol auth = new Auth();
   final VoidCallback onSignIn;
 
   @override
