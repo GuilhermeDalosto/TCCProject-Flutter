@@ -41,7 +41,8 @@ class _LoginViewState extends State<LoginView> {
         setState(() {
           _authHint = 'Logado como\n\nUser id: $userId';
         });
-        widget.onSignIn();
+        print("Login feito com sucesso");
+        // widget.onSignIn();
       } catch (e) {
         setState(() {
           _authHint = 'Erro de Login\n\n${e.toString()}';
