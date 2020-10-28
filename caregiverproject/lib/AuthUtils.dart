@@ -22,7 +22,7 @@ class Auth implements AuthUtils {
   }
 
   Future<String> currentUser() async {
-    User user = await _firebaseAuth.currentUser;
+    User user = _firebaseAuth.currentUser;
     if (user != null) {
       return user.toString();
     } else {
