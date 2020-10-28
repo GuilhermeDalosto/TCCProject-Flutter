@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class GroupOptionView extends StatefulWidget {
+class FamilyOptionView extends StatefulWidget {
   @override
-  _GroupOptionViewState createState() => _GroupOptionViewState();
+  _FamilyOptionViewState createState() => _FamilyOptionViewState();
 }
 
-class _GroupOptionViewState extends State<GroupOptionView> {
+class _FamilyOptionViewState extends State<FamilyOptionView> {
   Widget padded({Widget child}) {
     return new Padding(
       padding: EdgeInsets.symmetric(vertical: 20.0),
@@ -19,7 +19,7 @@ class _GroupOptionViewState extends State<GroupOptionView> {
           child: RaisedButton(
         onPressed: () {},
         child: Text(
-          "Create a Group",
+          "Create a Family",
           style: TextStyle(color: Colors.white),
         ),
         color: Colors.blue[600],
@@ -28,7 +28,7 @@ class _GroupOptionViewState extends State<GroupOptionView> {
           child: RaisedButton(
         onPressed: () {},
         child: Text(
-          "Join a Group",
+          "Join a Family",
           style: TextStyle(color: Colors.white),
         ),
         color: Colors.blue[600],
@@ -40,7 +40,7 @@ class _GroupOptionViewState extends State<GroupOptionView> {
   Widget build(BuildContext context) {
     return new Scaffold(
         appBar: new AppBar(
-          title: new Text("Group"),
+          title: new Text("Family"),
         ),
         backgroundColor: Colors.grey[300],
         body: Center(
