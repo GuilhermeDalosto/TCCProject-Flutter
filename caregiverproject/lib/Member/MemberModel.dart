@@ -1,9 +1,11 @@
 class Member {
+  String uid;
   String name;
   bool isAdm;
 
-  Member(String name, bool isAdm) {
-    this.name = name;
-    this.isAdm = isAdm;
-  }
+  Member({
+    this.name,
+    this.isAdm,
+    this.uid,
+  });
 }

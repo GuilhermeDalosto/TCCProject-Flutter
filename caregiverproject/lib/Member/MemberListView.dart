@@ -8,9 +8,18 @@ class MemberList extends StatefulWidget {
 
 class DyanmicList extends State<MemberList> {
   List<Member> members = [
-    Member("Caio", false),
-    Member("Fabio", false),
-    Member("Guilherme", true)
+    Member(
+      name: 'Caio',
+      isAdm: false,
+    ),
+    Member(
+      name: 'Fabio',
+      isAdm: false,
+    ),
+    Member(
+      name: 'Guilherme',
+      isAdm: true,
+    )
   ];
 
   Widget _getAdmin(BuildContext context, int index) {

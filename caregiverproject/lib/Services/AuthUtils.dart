@@ -1,5 +1,8 @@
 import 'dart:async';
+import 'package:caregiverproject/Member/MemberModel.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+
+import 'dbFuture.dart';
 
 abstract class AuthProtocol {
   Future<String> currentUser();
@@ -12,13 +15,25 @@ class Auth implements AuthProtocol {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
 
   Future<String> signIn(String email, String password) async {
-    UserCredential user = await _firebaseAuth.signInWithEmailAndPassword(email: email, password: password);
+    UserCredential user = await _firebaseAuth.signInWithEmailAndPassword(
+        email: email, password: password);
+
     return user.toString();
   }
 
   Future<String> createUser(String email, String password) async {
-    UserCredential user = await _firebaseAuth.createUserWithEmailAndPassword(email: email, password: password);
-    return user.toString();
+    UserCredential member = await _firebaseAuth.createUserWithEmailAndPassword(
+        email: email, password: password);
+    Member _member = Member(
+      uid: member.user.uid,
+      name: member.user.displayName,
+      isAdm: false,
+    );
+    String _returnString = await DBFuture().createUser(_member);
+    if (_returnString == "success") {
+      print("success");
+    }
+    return member.toString();
   }
 
   Future<String> currentUser() async {
@@ -33,5 +48,4 @@ class Auth implements AuthProtocol {
   Future<void> signOut() async {
     return _firebaseAuth.signOut();
   }
-
 }

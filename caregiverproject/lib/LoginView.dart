@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'ButtonCustomComponent.dart';
-import 'AuthUtils.dart';
+import 'Services/AuthUtils.dart';
 
 class LoginView extends StatefulWidget {
   LoginView({Key key, this.title, this.onSignIn}) : super(key: key);  
