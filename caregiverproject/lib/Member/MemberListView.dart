@@ -1,14 +1,5 @@
 import 'package:flutter/material.dart';
-
-class Member {
-  String name;
-  bool isAdm;
-
-  Member(String name, bool isAdm) {
-    this.name = name;
-    this.isAdm = isAdm;
-  }
-}
+import 'package:caregiverproject/Member/MemberModel.dart';
 
 class MemberList extends StatefulWidget {
   @override
