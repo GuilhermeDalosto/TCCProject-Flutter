@@ -10,6 +10,7 @@ class CreateFamilyView extends StatefulWidget {
 
 class _CreateFamilyViewState extends State<CreateFamilyView> {
   static final formKey = new GlobalKey<FormState>();
+  TextEditingController familyNameController = new TextEditingController();
 
   String _familyName;
 
@@ -17,6 +18,7 @@ class _CreateFamilyViewState extends State<CreateFamilyView> {
     return [
       padded(
           child: new TextFormField(
+        controller: familyNameController,
         key: new Key("familyName"),
         decoration: new InputDecoration(labelText: "Family Name"),
         autocorrect: false,
@@ -26,8 +28,8 @@ class _CreateFamilyViewState extends State<CreateFamilyView> {
       padded(
           child: RaisedButton(
         onPressed: () async {
-          DBFuture()
-              .createGroup(_familyName.toString(), await Auth().currentUser());
+          DBFuture().createGroup(
+              familyNameController.text, await Auth().currentUser());
           Navigator.push(
               context, MaterialPageRoute(builder: (context) => MemberList()));
         },
@@ -57,13 +59,13 @@ class _CreateFamilyViewState extends State<CreateFamilyView> {
                   children: <Widget>[
                 new Container(
                     padding: const EdgeInsets.all(16.0),
-                    //child: new Form(
-                    //key: formKey,
-                    child: new Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: familyInfo(),
-                    )),
+                    child: new Form(
+                        key: formKey,
+                        child: new Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          children: familyInfo(),
+                        ))),
               ])),
         ))));
   }

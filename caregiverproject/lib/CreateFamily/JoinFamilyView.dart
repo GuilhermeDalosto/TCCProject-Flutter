@@ -10,6 +10,7 @@ class JoinFamilyView extends StatefulWidget {
 
 class _JoinFamilyViewState extends State<JoinFamilyView> {
   static final formKey = new GlobalKey<FormState>();
+  TextEditingController familyNameController = new TextEditingController();
 
   String _familyName;
 
@@ -17,6 +18,7 @@ class _JoinFamilyViewState extends State<JoinFamilyView> {
     return [
       padded(
           child: new TextFormField(
+        controller: familyNameController,
         key: new Key("familyKey"),
         decoration: new InputDecoration(labelText: "Family Code"),
         autocorrect: false,
@@ -26,7 +28,8 @@ class _JoinFamilyViewState extends State<JoinFamilyView> {
       padded(
           child: RaisedButton(
         onPressed: () async {
-          DBFuture().joinGroup(_familyName, await Auth().currentUser());
+          DBFuture()
+              .joinGroup(familyNameController.text, await Auth().currentUser());
           Navigator.push(
               context, MaterialPageRoute(builder: (context) => MemberList()));
         },
