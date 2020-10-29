@@ -44,6 +44,7 @@ class DBFuture {
 
       await _firestore.collection("members").doc(member.uid).update({
         'groupId': groupId,
+        'isAdm': false,
       });
 
       retVal = "success";

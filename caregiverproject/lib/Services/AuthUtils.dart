@@ -26,7 +26,7 @@ class Auth implements AuthProtocol {
         email: email, password: password);
     Member _member = Member(
       uid: member.user.uid,
-      name: member.user.displayName,
+      name: member.user.email,
       isAdm: false,
     );
     String _returnString = await DBFuture().createUser(_member);

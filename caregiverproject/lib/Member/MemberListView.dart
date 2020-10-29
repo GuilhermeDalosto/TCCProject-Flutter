@@ -29,7 +29,7 @@ class MemberList extends StatelessWidget {
       title: 'Firebase test',
       home: Scaffold(
           appBar: AppBar(
-            title: Text(''),
+            title: Text(groupId),
           ),
           body: StreamBuilder(
             stream: FirebaseFirestore.instance
@@ -62,6 +62,9 @@ class MemberList extends StatelessWidget {
 
                     return ListTile(
                       title: Text(item['name']),
+                      trailing: item['isAdm'] != null
+                          ? Icon(Icons.star)
+                          : Icon(Icons.person),
                     );
                   });
             },
