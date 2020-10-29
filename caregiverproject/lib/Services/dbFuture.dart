@@ -19,13 +19,12 @@ class DBFuture {
         'members': members,
         'groupCreated': Timestamp.now(),
       });
-
       await _firestore
           .collection("members")
           .doc(user.uid)
           .update({'groupId': _docRef.id, 'isAdm': true});
 
-      retVal = "success";
+      retVal = _docRef.id.toString();
     } catch (e) {
       print(e);
     }

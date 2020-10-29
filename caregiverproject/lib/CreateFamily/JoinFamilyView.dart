@@ -31,7 +31,11 @@ class _JoinFamilyViewState extends State<JoinFamilyView> {
           DBFuture()
               .joinGroup(familyNameController.text, await Auth().currentUser());
           Navigator.push(
-              context, MaterialPageRoute(builder: (context) => MemberList()));
+              context,
+              MaterialPageRoute(
+                  builder: (context) => MemberList(
+                        groupId: familyNameController.text,
+                      )));
         },
         child: Text(
           "Join",

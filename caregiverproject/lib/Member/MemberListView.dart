@@ -1,12 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:caregiverproject/Member/MemberModel.dart';
 
-class MemberList extends StatefulWidget {
-  @override
-  State createState() => new DyanmicList();
-}
-
-class DyanmicList extends State<MemberList> {
+class MemberList extends StatelessWidget {
   List<Member> members = [
     Member(
       name: 'Caio',
@@ -22,24 +18,54 @@ class DyanmicList extends State<MemberList> {
     )
   ];
 
-  Widget _getAdmin(BuildContext context, int index) {
-    return ListTile(
-      title: Text(members[index].name),
-      trailing: members[index].isAdm ? Icon(Icons.star) : Icon(Icons.person),
-    );
-  }
+  String groupId;
+  MemberList({
+    this.groupId,
+  });
 
   @override
-  Widget build(BuildContext ctxt) {
-    return new Scaffold(
-      appBar: new AppBar(title: new Text("Members")),
-      body: new ListView.separated(
-        separatorBuilder: (context, index) => Divider(
-          color: Colors.blueGrey[200],
-        ),
-        itemCount: members.length,
-        itemBuilder: _getAdmin,
-      ),
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Firebase test',
+      home: Scaffold(
+          appBar: AppBar(
+            title: Text(''),
+          ),
+          body: StreamBuilder(
+            stream: FirebaseFirestore.instance
+                .collection('members')
+                .where('groupId', isEqualTo: groupId)
+                .snapshots(),
+            builder: (
+              BuildContext context,
+              AsyncSnapshot<QuerySnapshot> snapshot,
+            ) {
+              if (snapshot.hasError) {
+                return Center(
+                  child: Text('Error: ${snapshot.error}'),
+                );
+              }
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return Center(
+                  child: CircularProgressIndicator(),
+                );
+              }
+              if (snapshot.data.docs.length == 0) {
+                return Center(
+                  child: Text('Nenhuma familia cadastrada ainda'),
+                );
+              }
+              return ListView.builder(
+                  itemCount: snapshot.data.docs.length,
+                  itemBuilder: (BuildContext context, int i) {
+                    var item = snapshot.data.docs[i].data();
+
+                    return ListTile(
+                      title: Text(item['name']),
+                    );
+                  });
+            },
+          )),
     );
   }
 }

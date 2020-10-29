@@ -28,10 +28,14 @@ class _CreateFamilyViewState extends State<CreateFamilyView> {
       padded(
           child: RaisedButton(
         onPressed: () async {
-          DBFuture().createGroup(
+          String val = await DBFuture().createGroup(
               familyNameController.text, await Auth().currentUser());
           Navigator.push(
-              context, MaterialPageRoute(builder: (context) => MemberList()));
+              context,
+              MaterialPageRoute(
+                  builder: (context) => MemberList(
+                        groupId: val,
+                      )));
         },
         child: Text(
           "Create",
